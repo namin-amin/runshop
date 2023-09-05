@@ -1,0 +1,3 @@
+<a href="https://www.flaticon.com/free-icons/chat-box" title="chat box icons"
+    >Chat box icons created by Pixel perfect - Flaticon</a
+>

@@ -1,0 +1,21 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "description": "collection of app packages",
+  "scripts": {
+    "build core": "tsc"
+  },
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "workspaces": [
+    "packages/*",
+    "front"
+  ],
+  "dependencies": {
+    "@types/node": "^20.5.9",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
+    "workspaces": "^0.1.0"
+  }
+}
