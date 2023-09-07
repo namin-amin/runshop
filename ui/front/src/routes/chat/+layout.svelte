@@ -1,6 +1,9 @@
 <script lang="ts">
     import ChatTopBar from "../../components/chat/ChatTopBar.svelte";
     import ChatListContainer from "../../components/chat/chatlist/ChatListContainer.svelte";
+    import WindowHeader from "../../components/chat/chatwindow/WindowHeader.svelte";
+    import Editor from "../../components/chat/editor/Editor.svelte";
+    import WindowSubHeader from "../../components/chat/chatwindow/WindowSubHeader.svelte";
 </script>
 
 <div class="w-screen h-screen overflow-hidden grid grid-cols-22 grid-rows-16">
@@ -18,5 +21,14 @@
     >
         <ChatListContainer />
     </div>
-    <slot />
+    <div class="col-start-7 col-span-full row-start-2 row-end-[14]">
+        <WindowHeader />
+        <WindowSubHeader />
+        <slot />
+    </div>
+    <div
+        class="col-start-7 col-span-full mx-3 row-start-[15] row-span-1 justify-center flex items-center"
+    >
+        <Editor />
+    </div>
 </div>

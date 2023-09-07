@@ -7,7 +7,7 @@
 
 <div class="h-full w-full bg-accent flex items-center">
     <div
-        class="flex items-center gap-4 justify-center pl-20 w-fit flex-1 h-full"
+        class="flex items-center gap-4 justify-center pl-20 w-fit flex-1 h-full text-neutral-200"
     >
         <LeftPointArrow />
         <RightPointArrow />

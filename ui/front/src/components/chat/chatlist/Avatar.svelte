@@ -8,7 +8,9 @@
     export let className = "";
 </script>
 
-<div class="w-full h-12 m-2 gap-2 flex items-center text-neutral-300">
+<div
+    class="w-full h-12 m-2 gap-2 flex items-center text-neutral-300 cursor-pointer"
+>
     <div class="avatar" class:online>
         {#if imgUrl != ""}
             <div class={` rounded-full ${className}`}>

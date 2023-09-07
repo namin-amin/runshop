@@ -22,7 +22,7 @@
         <div
             class="text-base-300 gap-2 flex flex-row justify-center items-center absolute"
         >
-            <Search />
+            <Search className="w-4 h-4" />
             <p>Search</p>
         </div>
     {/if}

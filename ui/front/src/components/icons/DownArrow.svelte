@@ -1,5 +1,6 @@
 <script lang="ts">
     import { slide } from "svelte/transition";
+    export let className = "h-5 w-5 stroke-2 cursor-pointer ";
 </script>
 
 <svg
@@ -7,7 +8,7 @@
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-chevron-down h-5 w-5 stroke-2 cursor-pointer"
+    class={`bi bi-chevron-down ${className}`}
     viewBox="0 0 16 16"
     in:slide={{ delay: 100, duration: 100 }}
     on:click

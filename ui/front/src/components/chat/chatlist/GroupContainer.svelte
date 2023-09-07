@@ -13,7 +13,7 @@
 </script>
 
 <div class="text-neutral-200 max-h-[60%] w-full m-1 flex flex-col">
-    <div class="flex flex-row justify-stretch items-center">
+    <div class="flex flex-row justify-stretch items-center text-neutral-100">
         {#if expand}
             <DownArrow on:click={toggleExpanf} on:keydow={toggleExpanf} />
         {:else}

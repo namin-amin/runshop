@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { slide } from "svelte/transition";
-
     export let className = "h-5 w-5 stroke-2 cursor-pointer";
 </script>
 
@@ -9,15 +7,14 @@
     width="16"
     height="16"
     fill="currentColor"
-    class={`bi bi-chevron-right ${className}`}
+    class={`bi bi-plus-lg ${className}`}
     viewBox="0 0 16 16"
-    in:slide={{ delay: 100, duration: 100 }}
     on:click
     on:keydown
     role="none"
 >
     <path
         fill-rule="evenodd"
-        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+        d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
     />
 </svg>

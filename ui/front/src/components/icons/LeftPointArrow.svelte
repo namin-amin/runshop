@@ -1,11 +1,16 @@
+<script lang="ts">
+    export let className = "h-5 w-5 stroke-2 cursor-pointer";
+</script>
+
 <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-arrow-left h-5 w-5 stroke-2 cursor-pointer text-neutral-200"
+    class={`bi bi-arrow-left ${className}`}
     viewBox="0 0 16 16"
     on:click
+    on:keydown
     role="none"
 >
     <path
