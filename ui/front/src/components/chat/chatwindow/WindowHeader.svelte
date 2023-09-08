@@ -4,7 +4,7 @@
 
     export let props: WindowHeaderProps = {
         title: "Heading",
-        description: "SomeDecription",
+        description: "SomeDecription dfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdyyyyyy",
     };
 </script>
 
@@ -14,10 +14,14 @@
     <div class="flex justify-center items-center gap-4">
         <h1 class="text-2xl font-bold">{props.title}</h1>
         <DownArrow />
-        <h1 class="ml-8">{props.description}</h1>
+        <p
+            class="ml-8 text-sm text-neutral-500 whitespace-nowrap text-ellipsis w-96 overflow-hidden"
+        >
+            {props.description}
+        </p>
     </div>
 
     <div class=" justify-self-end">
-        <h1 class="justify-self-center">{props.description}</h1>
+        <h1 class="justify-self-center">last row</h1>
     </div>
 </div>

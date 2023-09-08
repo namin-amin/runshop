@@ -8,7 +8,7 @@
     export let send = false;
     $: btnCls = () => {
         if (send) {
-            return "bg-success w-24 gap-2 p-3 h-full justify-self-end flex flex-row justify-center items-center rounded-xl cursor-pointer hover:bg-neutral-300 active:bg-success-focus transition-all text-neutral-200";
+            return "bg-success w-24 gap-2 p-3 h-full justify-self-end flex flex-row justify-center items-center rounded-xl cursor-pointer hover:bg-success  active:bg-success-content transition-all text-neutral-200";
         }
         return "bg-neutral-200 w-24 gap-2 p-3 h-full justify-self-end flex flex-row justify-center items-center rounded-xl cursor-pointer hover:bg-neutral-300 active:bg-neutral-200 transition-all";
     };

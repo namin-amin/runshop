@@ -1,6 +1,117 @@
-<script>
-    import WindowHeader from "../../components/chat/chatwindow/WindowHeader.svelte";
-    import WindowSubHeader from "../../components/chat/chatwindow/WindowSubHeader.svelte";
+<script lang="ts">
+    import ChatThread from "../../components/chat/chatthread/ChatThread.svelte";
+
+    let values = [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+    ];
 </script>
 
-<h1>hello</h1>
+<div
+    class="block
+    gap-4
+    h-full w-full overflow-y-auto
+    overflow-hidden justify-normal
+    items-center scroll-smooth scroll
+    no-scrollbar"
+>
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+    <ChatThread />
+    <ChatThread />
+
+    <ChatThread />
+
+    <ChatThread />
+</div>

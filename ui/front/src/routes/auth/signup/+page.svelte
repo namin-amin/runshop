@@ -1,6 +1,4 @@
 <script lang="ts">
-    import IoLogoGoogle from "svelte-icons/io/IoLogoGoogle.svelte";
-    import IoLogoFacebook from "svelte-icons/io/IoLogoFacebook.svelte";
 </script>
 
 <div class="flex justify-between items-center w-full h-full gap-x-3">

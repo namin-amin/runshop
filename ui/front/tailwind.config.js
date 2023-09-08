@@ -13,6 +13,7 @@ export default {
       gridTemplateColumns: {
         "18": "repeat(18, minmax(0, 1fr))",
         "20": "repeat(20, minmax(0, 1fr))",
+        "21": "repeat(21, minmax(0, 1fr))",
         "22": "repeat(22, minmax(0, 1fr))"
       },
       gridTemplateRows: {
