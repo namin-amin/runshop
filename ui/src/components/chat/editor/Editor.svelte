@@ -14,9 +14,9 @@
     </div>
     <textarea
         bind:value={txtvalue}
-        class="textarea resize-none outline-none focus:outline-none"
+        class="textarea resize-none outline-none focus:outline-none no-scrollbar"
     />
-    <div class=" w-full justify-self-end">
+    <div class="w-full justify-self-end">
         <AttachementsAndExtra send={cansend()} />
     </div>
 </Container>
