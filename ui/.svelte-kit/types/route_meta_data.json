@@ -1,0 +1,11 @@
+{
+	"/": [],
+	"/attribute": [],
+	"/auth": [],
+	"/auth/signup": [],
+	"/auth/[...signin]": [],
+	"/chat": [
+		"src/routes/chat/+layout.server.ts",
+		"src/routes/chat/+layout.server.ts"
+	]
+}
