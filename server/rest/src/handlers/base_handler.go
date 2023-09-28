@@ -1,56 +1,26 @@
 package handlers
 
 import (
-	"github.com/gin-gonic/gin"
+	"github.com/labstack/echo/v4"
 	"github.com/runshop/server/rest/pkg/app"
-	"net/http"
 	"time"
 )
 
 type BaseHandler struct {
-	routGroup *gin.RouterGroup
+	routGroup *echo.Group
 	app       app.IApp
 }
 
 type Response struct {
-	ResponseTime time.Time   `json:"responseTime"`
-	Status       int         `json:"status"`
+	ResponseTime int64       `json:"responseTime"`
 	Message      string      `json:"message"`
 	Data         interface{} `json:"data"`
 }
 
-func (b *BaseHandler) NotFound(ctx *gin.Context, message string, data interface{}) {
-	ctx.JSON(http.StatusNotFound, Response{
-		ResponseTime: time.Now(),
-		Status:       http.StatusNotFound,
+func NewResponse(message string, data interface{}) *Response {
+	return &Response{
+		ResponseTime: time.Now().Unix(),
 		Message:      message,
 		Data:         data,
-	})
-}
-
-func (b *BaseHandler) Ok(ctx *gin.Context, message string, data interface{}) {
-	ctx.JSON(http.StatusOK, Response{
-		ResponseTime: time.Now(),
-		Status:       http.StatusOK,
-		Message:      message,
-		Data:         data,
-	})
-}
-
-func (b *BaseHandler) InternalServerError(ctx *gin.Context, message string, data interface{}) {
-	ctx.JSON(http.StatusInternalServerError, Response{
-		ResponseTime: time.Now(),
-		Status:       http.StatusInternalServerError,
-		Message:      message,
-		Data:         data,
-	})
-}
-
-func (b *BaseHandler) BadRequest(ctx *gin.Context, message string, data interface{}) {
-	ctx.JSON(http.StatusBadRequest, Response{
-		ResponseTime: time.Now(),
-		Status:       http.StatusBadRequest,
-		Message:      message,
-		Data:         data,
-	})
+	}
 }

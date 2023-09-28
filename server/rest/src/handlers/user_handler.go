@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"github.com/gin-gonic/gin"
+	"github.com/labstack/echo/v4"
 	"github.com/runshop/server/rest/pkg/app"
-	"strconv"
+	"net/http"
 )
 
 type UserHandler struct {
@@ -15,32 +15,19 @@ func (uh *UserHandler) RegisterHandler() {
 	uh.routGroup.GET("/:id", uh.getOneUser)
 }
 
-func (uh *UserHandler) getAllUsers(ctx *gin.Context) {
+func (uh *UserHandler) getAllUsers(ctx echo.Context) error {
 	allUsers, err := uh.app.UserService().GetAll()
 	if err != nil {
-		uh.InternalServerError(ctx, "could not get data from the datasource", nil)
-		return
+		return echo.NewHTTPError(http.StatusInternalServerError, NewResponse("could not get users from datasource", nil))
 	}
-	uh.Ok(ctx, "", allUsers)
-
+	return ctx.JSON(http.StatusOK, NewResponse("", allUsers))
 }
 
-func (uh *UserHandler) getOneUser(ctx *gin.Context) {
-	id := ctx.Param("id")
-	parsedId, err := strconv.ParseInt(id, 10, 64)
-	if err != nil {
-		uh.BadRequest(ctx, "could not convert given value to required id", nil)
-		return
-	}
-	user, err := uh.app.UserService().GetOne(parsedId)
-	if err != nil {
-		uh.InternalServerError(ctx, "could not retrieve specified user from the database", nil)
-		return
-	}
-	uh.Ok(ctx, "", user)
+func (uh *UserHandler) getOneUser(ctx echo.Context) error {
+	return ctx.String(200, "")
 }
 
-func (uh *UserHandler) NewHandler(engine *gin.Engine, appInstance app.IApp) IHandler {
+func (uh *UserHandler) NewHandler(engine *echo.Echo, appInstance app.IApp) IHandler {
 	uh.routGroup = engine.Group("home")
 	uh.app = appInstance
 	return uh

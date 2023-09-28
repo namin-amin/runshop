@@ -1,17 +1,13 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"github.com/labstack/echo/v4"
 	app2 "github.com/runshop/server/rest/pkg/app"
 	"github.com/runshop/server/rest/src/handlers"
 )
 
 func main() {
-	app := app2.NewApp(gin.Default())
+	app := app2.NewApp(echo.New())
 	handlers.RegisterHandlers(app)
-	err := app.Server().Run(":3000")
-
-	if err != nil {
-		panic("Unable to start the server following error is thrown \n" + err.Error())
-	}
+	app.Server().Logger.Fatal(app.Server().Start(":3000"))
 }

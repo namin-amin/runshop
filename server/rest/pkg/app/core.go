@@ -1,13 +1,13 @@
 package app
 
 import (
-	"github.com/gin-gonic/gin"
+	"github.com/labstack/echo/v4"
 	"github.com/runshop/server/rest/pkg/data"
 	"github.com/runshop/server/rest/pkg/services"
 )
 
 type App struct {
-	engine      *gin.Engine
+	engine      *echo.Echo
 	userService services.IUserService
 }
 
@@ -15,11 +15,11 @@ func (a *App) UserService() services.IUserService {
 	return a.userService
 }
 
-func (a *App) Server() *gin.Engine {
+func (a *App) Server() *echo.Echo {
 	return a.engine
 }
 
-func NewApp(engine *gin.Engine) IApp {
+func NewApp(engine *echo.Echo) IApp {
 	dbConnection := data.NewDbConnection()
 	return &App{
 		engine:      engine,
