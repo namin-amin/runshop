@@ -3,7 +3,10 @@ package handlers
 import (
 	"github.com/labstack/echo/v4"
 	"github.com/runshop/server/rest/pkg/app"
+	"github.com/runshop/server/rest/pkg/models"
+	"github.com/runshop/server/rest/src/handlers/validations"
 	"net/http"
+	"strconv"
 )
 
 type UserHandler struct {
@@ -13,6 +16,7 @@ type UserHandler struct {
 func (uh *UserHandler) RegisterHandler() {
 	uh.routGroup.GET("/", uh.getAllUsers)
 	uh.routGroup.GET("/:id", uh.getOneUser)
+	uh.routGroup.POST("/", uh.newUser)
 }
 
 func (uh *UserHandler) getAllUsers(ctx echo.Context) error {
@@ -24,7 +28,32 @@ func (uh *UserHandler) getAllUsers(ctx echo.Context) error {
 }
 
 func (uh *UserHandler) getOneUser(ctx echo.Context) error {
-	return ctx.String(200, "")
+	id := ctx.Param("id")
+	intId, err := strconv.ParseInt(id, 10, 64)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, NewResponse("supplied parameter is not valid", nil))
+
+	}
+	return ctx.JSON(200, echo.Map{
+		id: intId,
+	})
+}
+
+func (uh *UserHandler) newUser(ctx echo.Context) error {
+	user := new(models.User)
+
+	err := ctx.Bind(&user)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, NewResponse("could not bind the data or data was wrong", err.Error()))
+	}
+
+	err = validations.IsUserCreationDtoValid(*user)
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, NewResponse("validation error", err.Error()))
+	}
+
+	return ctx.JSON(http.StatusOK, user)
 }
 
 func (uh *UserHandler) NewHandler(engine *echo.Echo, appInstance app.IApp) IHandler {
