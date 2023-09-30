@@ -1,9 +1,11 @@
 package handlers
 
 import (
+	echojwt "github.com/labstack/echo-jwt/v4"
 	"github.com/labstack/echo/v4"
 	"github.com/runshop/server/rest/pkg/app"
 	"github.com/runshop/server/rest/pkg/models"
+	"github.com/runshop/server/rest/src/handlers/middlewares"
 	"github.com/runshop/server/rest/src/handlers/validations"
 	"net/http"
 	"strconv"
@@ -15,7 +17,8 @@ type UserHandler struct {
 
 func (uh *UserHandler) RegisterHandler() {
 	uh.routGroup.GET("/", uh.getAllUsers)
-	uh.routGroup.GET("/:id", uh.getOneUser)
+	uh.routGroup.GET("/:id", uh.getOneUser,
+		echojwt.WithConfig(*middlewares.CustomJwtConfig()))
 	uh.routGroup.POST("/", uh.newUser)
 }
 
@@ -32,7 +35,6 @@ func (uh *UserHandler) getOneUser(ctx echo.Context) error {
 	intId, err := strconv.ParseInt(id, 10, 64)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, NewResponse("supplied parameter is not valid", nil))
-
 	}
 	return ctx.JSON(200, echo.Map{
 		id: intId,
