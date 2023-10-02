@@ -1,0 +1,6 @@
+@runshop.rest_HostAddress = http://localhost:5052
+
+GET {{runshop.rest_HostAddress}}/user/
+Accept: application/json
+
+###
