@@ -2,28 +2,27 @@
 using System;
 using System.Threading.Tasks;
 
-namespace runShop.data.unit
+namespace runShop.data.unit;
+public class DataUnit : IUnit, IDisposable
 {
-    public class DataUnit : IUnit, IDisposable
+    private readonly AppDbContext dbContext;
+
+    public IUserRepo userRepo { get; }
+
+    public DataUnit(AppDbContext dbContext)
     {
-        private readonly AppDbContext dbContext;
+        this.dbContext = dbContext;
+        this.userRepo = new UserRepo(dbContext);
+    }
 
-        public IUserRepo userRepo { get; }
+    public void Dispose()
+    {
+        dbContext.Dispose();
+    }
 
-        public DataUnit(AppDbContext dbContext)
-        {
-            this.dbContext = dbContext;
-            this.userRepo = new UserRepo(dbContext);
-        }
-
-        public void Dispose()
-        {
-            dbContext.Dispose();
-        }
-
-        public async Task SaveChangesAsync()
-        {
-            await dbContext.SaveChangesAsync();
-        }
+    public async Task SaveChangesAsync()
+    {
+        await dbContext.SaveChangesAsync();
     }
 }
+

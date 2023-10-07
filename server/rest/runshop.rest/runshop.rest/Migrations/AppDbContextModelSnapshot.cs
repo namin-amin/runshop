@@ -7,7 +7,7 @@ using runShop.data;
 
 #nullable disable
 
-namespace runShop.rest.Migrations
+namespace runShop.services.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -17,13 +17,13 @@ namespace runShop.rest.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
 
-            modelBuilder.Entity("runShop.Models.User", b =>
+            modelBuilder.Entity("runShop.Models.models.User", b =>
                 {
                     b.Property<ulong>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Create")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
@@ -42,7 +42,7 @@ namespace runShop.rest.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Update")
+                    b.Property<DateTime>("UpdateAt")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

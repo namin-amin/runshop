@@ -1,15 +1,15 @@
-﻿namespace runShop.rest.Dtos
+﻿namespace runShop.rest.Dtos;
+
+public class ResponseSchema<TData>
+    where TData : class
 {
-    public class ResponseDto<T>
-        where T : class
+    public dynamic? Errors { get; set; }
+    public TData? Data { get; set; }
+    public ResponseSchema(TData? data, dynamic? errors)
     {
-        public string[]? Errors { get; set; }
-        public T? Data{ get; set; }
-        public ResponseDto(T? data , string[]? errors)
-        {
-            Errors = errors;
-            Data = data;    
-        }
-        
+        Errors = errors;
+        Data = data;
     }
+
 }
+

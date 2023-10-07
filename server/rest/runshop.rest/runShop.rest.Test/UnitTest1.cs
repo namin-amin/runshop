@@ -1,4 +1,4 @@
-namespace runShop.rest.Test
+namespace runShop.services.Test
 {
     public class UnitTest1
     {

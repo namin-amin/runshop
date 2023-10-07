@@ -1,11 +1,10 @@
 ﻿using System.Threading.Tasks;
 using runShop.data.Repos.user;
 
-namespace runShop.data.unit
+namespace runShop.data.unit;
+public interface IUnit
 {
-    public interface IUnit
-    {
-        public IUserRepo userRepo { get; }
-        public Task SaveChangesAsync();
-    }
+    public IUserRepo userRepo { get; }
+    public Task SaveChangesAsync();
 }
+

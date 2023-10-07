@@ -1,10 +1,10 @@
-﻿namespace runShop.rest.Dto.user
+﻿namespace runShop.rest.Dtos.user;
+
+public class CreateUserDto
 {
-    public class CreateUserDto
-    {
-        public string FirstName { get; set; } =string.Empty;
-        public string LastName { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
-    }
+    public string FirstName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
 }
+

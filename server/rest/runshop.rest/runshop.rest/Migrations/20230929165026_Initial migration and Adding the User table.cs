@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace runShop.rest.Migrations
+namespace runShop.services.Migrations
 {
     /// <inheritdoc />
     public partial class InitialmigrationandAddingtheUsertable : Migration

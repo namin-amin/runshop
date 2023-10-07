@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "runShop.data", "runShop.dat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1EE3BE5C-ABB4-4882-B8E7-B1126CF84F07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "runShop.rest.Test", "runShop.rest.Test\runShop.rest.Test.csproj", "{22B81473-E27C-4BC9-A6E6-B7BD827FECC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "runShop.rest.Test", "runShop.rest.Test\runShop.rest.Test.csproj", "{22B81473-E27C-4BC9-A6E6-B7BD827FECC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

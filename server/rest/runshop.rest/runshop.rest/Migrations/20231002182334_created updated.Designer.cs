@@ -11,8 +11,8 @@ using runShop.data;
 namespace runShop.services.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230929165026_Initial migration and Adding the User table")]
-    partial class InitialmigrationandAddingtheUsertable
+    [Migration("20231002182334_created updated")]
+    partial class createdupdated
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,13 +20,13 @@ namespace runShop.services.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
 
-            modelBuilder.Entity("runShop.Models.User", b =>
+            modelBuilder.Entity("runShop.Models.models.User", b =>
                 {
                     b.Property<ulong>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Create")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
@@ -45,7 +45,7 @@ namespace runShop.services.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Update")
+                    b.Property<DateTime>("UpdateAt")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
