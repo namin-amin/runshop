@@ -10,11 +10,11 @@ namespace runShop.data.Repos.baseRepo;
 public class BaseRepo<T> : IBaseRepo<T>
     where T : BaseModel
 {
-    private readonly DbSet<T> dbSet;
+    internal readonly DbSet<T> dbSet;
 
     public BaseRepo(AppDbContext appContext)
     {
-        this.dbSet = appContext.Set<T>();
+        dbSet = appContext.Set<T>();
     }
 
     public async Task Create(T model)

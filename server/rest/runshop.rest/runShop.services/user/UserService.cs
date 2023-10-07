@@ -48,6 +48,11 @@ public class UserService : IUserService
 
     public Task<User?> GetOneUserAsync(ulong id) => dataUnit.userRepo.Get(id);
 
+    public Task<bool> IsValidUser(User user)
+    {
+        return dataUnit.userRepo.IsVerifiedUser(user);
+    }
+
     public async Task<User?> UpdateUserAsync(User user)
     {
         if (await dataUnit.userRepo.Update(user))

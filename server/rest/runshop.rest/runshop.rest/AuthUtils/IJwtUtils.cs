@@ -1,7 +1,9 @@
-﻿namespace runShop.rest.AuthUtils
+﻿using runShop.Models.models;
+
+namespace runShop.rest.AuthUtils
 {
     public interface IJwtUtils
     {
-        string CreteJwtToken(JwtUserSchema jwtUserSchema);
+        string CreteJwtToken(User jwtUser);
     }
 }

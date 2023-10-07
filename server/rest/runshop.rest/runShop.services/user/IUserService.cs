@@ -11,5 +11,6 @@ public interface IUserService
     Task<User?> UpdateUserAsync(User user);
     Task<bool> DeleteUserAsync(ulong id);
     Task<User?> CreateNewUser(User user);
+    Task<bool> IsValidUser(User user);
 }
 

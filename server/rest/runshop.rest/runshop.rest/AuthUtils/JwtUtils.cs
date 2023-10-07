@@ -1,5 +1,5 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
+using runShop.Models.models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -31,11 +31,18 @@ public class JwtUtils : IJwtUtils
      _jwtSecret = Encoding.ASCII.GetBytes(key);
     }
 
-    public string CreteJwtToken(JwtUserSchema jwtUserSchema)
-    { 
+    public string CreteJwtToken(User jwtUser)
+    {
+        var jwtUserSchema = new JwtUserSchema
+        {
+            Id = Guid.NewGuid().ToString(),
+            Email = jwtUser.Email,
+            UserName = jwtUser.FirstName
+        };
+
         var tokenDescription = new SecurityTokenDescriptor
         {
-            Subject = new System.Security.Claims.ClaimsIdentity
+            Subject = new ClaimsIdentity
             (
             new[]
                 {
