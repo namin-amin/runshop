@@ -3,7 +3,7 @@
     export let online = false;
     export let name = "";
     export let imgUrl =
-        "https://media.licdn.com/dms/image/C5603AQGlEmco79zJLQ/profile-displayphoto-shrink_800_800/0/1635673979105?e=1699488000&v=beta&t=amSEer4E0z-szwCwSN7UJrpJL4OGs7RJwS7N-8h-XeU";
+        "/profile.jpg";
     export let showName = false;
     export let className = "";
 </script>

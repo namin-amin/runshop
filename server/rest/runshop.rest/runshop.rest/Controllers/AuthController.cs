@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
-using runShop.data.unit;
 using runShop.rest.Dtos.user;
 using runShop.rest.Dtos.auth;
 using runShop.rest.Dtos;
@@ -38,36 +37,36 @@ public class AuthController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ResponseSchema<string>))]
     public async Task<ActionResult> RegisterUser([FromBody] CreateUserDto user)
     {
-        if (user != null)
+        if (user == null)
         {
-            var validationResult = _validator.Validate(user);
-
-            if (!validationResult.IsValid)
-            {
-                return BadRequest(new ResponseSchema<string>(null,
-                   validationResult.Errors));
-            }
-
-            var newUser = await _userService.CreateNewUser(_mapper.Map<User>(user));
-
-            if (newUser is null)
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    new ResponseSchema<string>(null,
-                    new[] { "could not create a user" }));
-
-            var stringToken = _jwtUtils.CreteJwtToken(newUser);
-
-            if (string.IsNullOrWhiteSpace(stringToken))
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    new ResponseSchema<string>(null,
-                    new[] { "could not create a user" }));
-
-            return Ok(new ResponseSchema<AuthSuccess>(
-                new AuthSuccess { Token =  stringToken, User = _mapper.Map<UserResponseDto>(newUser)}, null));
+            return BadRequest(new ResponseSchema<string>(null,
+                        new[] { "provided data not valid" }));
 
         }
-        return BadRequest(new ResponseSchema<string>(null,
-                    new[] { "provided data not valid" }));
+        var validationResult = _validator.Validate(user);
+
+        if (!validationResult.IsValid)
+        {
+            return BadRequest(new ResponseSchema<string>(null,
+               validationResult.Errors));
+        }
+
+        var newUser = await _userService.CreateNewUser(_mapper.Map<User>(user));
+
+        if (newUser is null)
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                new ResponseSchema<string>(null,
+                new[] { "could not create a user" }));
+
+        var stringToken = _jwtUtils.CreteJwtToken(newUser);
+
+        if (string.IsNullOrWhiteSpace(stringToken))
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                new ResponseSchema<string>(null,
+                new[] { "could not create a user" }));
+
+        return Ok(new ResponseSchema<AuthSuccess>(
+            new AuthSuccess { Token = stringToken, User = _mapper.Map<UserResponseDto>(newUser) }, null));
     }
 
     [HttpPost("login")]
@@ -76,26 +75,25 @@ public class AuthController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult> LogIn([FromBody] CreateUserDto user)
     {
-        if (user != null)
+        if (user == null)
         {
-
-            var newUser = _mapper.Map<User>(user);
-
-            var isValidUser = await _userService.IsValidUser(newUser);
-
-            if (!isValidUser)
-                return BadRequest(new ResponseSchema<string>(null,
-               new[] { "Could not verify the user please try again" }));
-
-            var stringToken = _jwtUtils.CreteJwtToken(newUser);
-
-            if (string.IsNullOrWhiteSpace(stringToken))
-                return StatusCode(StatusCodes.Status500InternalServerError, "could not create new user");
-
-            return Ok(stringToken);
+            return BadRequest();
 
         }
-        return BadRequest();
+        var newUser = _mapper.Map<User>(user);
+
+        var isValidUser = await _userService.IsValidUser(newUser);
+
+        if (!isValidUser)
+            return BadRequest(new ResponseSchema<string>(null,
+           new[] { "Could not verify the user please try again" }));
+
+        var stringToken = _jwtUtils.CreteJwtToken(newUser);
+
+        if (string.IsNullOrWhiteSpace(stringToken))
+            return StatusCode(StatusCodes.Status500InternalServerError, "could not create new user");
+
+        return Ok(stringToken);
 
     }
 

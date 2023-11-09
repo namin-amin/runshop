@@ -105,7 +105,8 @@ export default {
           "warning": "#f8c754",
 
           "error": "#f75066",
-        }, mytheme4: {
+        }, mytheme4:
+        {
 
           "primary": "#1364a3",
 
@@ -124,8 +125,10 @@ export default {
           "warning": "#efb72a",
 
           "error": "#e01e5a",
-        },
+        }
+
       },
+
     ],
   },
   plugins: [require("daisyui")],

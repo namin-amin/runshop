@@ -8,6 +8,7 @@ using runShop.rest.AuthUtils;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using runShop.rest.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,9 +19,6 @@ if (KEY is null)
 
 
 // Add services to the container.
-
-builder.Services.AddControllers();
-
 
 builder.Services.AddDbContext<AppDbContext>(options => {
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"),b=>b.MigrationsAssembly(assemblyName: "runShop.rest"));
@@ -68,11 +66,14 @@ if (app.Environment.IsDevelopment())
 }
 
 
+
+
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
 
+app.MapUserEndpoints();
+app.MapAuthEndpoints();
 
 
 app.Run();

@@ -10,3 +10,4 @@ vite.config.ts.timestamp-*
 /idea
 .vs
 /.idea
+/.svelte-kit
