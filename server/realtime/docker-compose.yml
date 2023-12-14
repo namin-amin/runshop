@@ -1,9 +1,0 @@
-version: "3.8"
-services:
-  db:
-    image: mysql
-    environment:
-      - MYSQL_DATABASE=runshop
-      - MYSQL_ROOT_PASSWORD=secret123
-    ports:
-      - "3306:3306"
